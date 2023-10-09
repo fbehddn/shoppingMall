@@ -7,10 +7,10 @@ const Navbar = () => {
         <a href="/" className="btn btn-ghost normal-case text-xl">
           DB Market
         </a>
-        <a href="/" className="btn btn-ghost normal-case text-xl">
+        <a href="/cart" className="btn btn-ghost normal-case text-xl">
           장바구니
         </a>
-        <a href="/" className="btn btn-ghost normal-case text-xl">
+        <a href="/product" className="btn btn-ghost normal-case text-xl">
           상품
         </a>
       </div>

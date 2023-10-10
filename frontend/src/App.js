@@ -1,17 +1,20 @@
 import React from "react";
-// import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Product from "./components/Product";
-// import ProductDetail from "./components/Product-detail";
+import ProductDetail from "./components/Product-detail";
 
 const App = () => {
   return (
-    <>
+    <Router>
       <Navbar />
-      <Product />
-      {/* <Route path="/product-detail" element={<ProductDetail />} /> */}
-    </>
+      <Routes>
+        <Route path="/" element={<Product />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/product-detail/:productId" element={<ProductDetail />} />
+      </Routes>
+    </Router>
   );
 };
 

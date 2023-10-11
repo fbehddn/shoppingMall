@@ -16,9 +16,9 @@ const ProductDetail = () => {
           />
         </div>
         <div className="w-1/2 ml-40">
-          <h1 className="text-4xl">{productData.name}</h1>
-          <h2 className="text-2xl mt-2">{productData.price}</h2>
-          <p className="mt-2">{productData.description}</p>
+          <h1 className="text-6xl mb-10">{productData.name}</h1>
+          <h2 className="text-4xl mt-2 mb-10">{productData.price}</h2>
+          <p className="mt-2 text-xl">{productData.description}</p>
           <button className="mt-4 px-6 py-2 btn btn-outline btn-primary">
             Cart
           </button>

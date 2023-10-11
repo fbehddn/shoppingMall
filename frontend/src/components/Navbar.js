@@ -3,7 +3,7 @@ import image from "../assets/chatbot.jpg";
 const Navbar = () => {
   return (
     <div className="navbar bg-blue-600">
-      <div className="flex-1">
+      <div className="flex-1 mx-10">
         <a href="/" className="btn btn-ghost normal-case text-xl">
           DB Market
         </a>
@@ -14,7 +14,7 @@ const Navbar = () => {
           상품
         </a>
       </div>
-      <div className="flex-none">
+      <div className="flex-none mx-10 gap-4">
         <div className="dropdown dropdown-end">
           <label tabindex="0" className="btn btn-ghost btn-circle">
             <div className="indicator">
@@ -50,7 +50,7 @@ const Navbar = () => {
         </div>
         <div className="dropdown dropdown-end">
           <label tabindex="0" className="btn btn-ghost btn-circle avatar">
-            <div className="w-8 rounded-full">
+            <div className="w-9 rounded-full">
               <img src={image} alt="im" />
             </div>
           </label>

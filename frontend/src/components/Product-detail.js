@@ -18,6 +18,7 @@ const ProductDetail = () => {
         <div className="w-1/2 ml-40">
           <h1 className="text-6xl mb-10">{productData.name}</h1>
           <h2 className="text-4xl mt-2 mb-10">{productData.price}</h2>
+          <h2 className="text-4xl mt-2 mb-10 hidden">{productData.amount}</h2>
           <p className="mt-2 text-xl">{productData.description}</p>
           <Link
             to="/cart"

@@ -1,9 +1,7 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 
-const CartItem = () => {
-  const location = useLocation();
-  const productData = location.state.productData;
+const CartItem = (props) => {
+  const productData = props.productData;
 
   return (
     <div className="flex items-center justify-center mt-10">
@@ -16,6 +14,7 @@ const CartItem = () => {
         <div>
           <h2 className="text-xl font-bold mb-2">{productData.name}</h2>
           <p className="text-gray-700 mb-4">{productData.description}</p>
+          <p className="text-gray-700 mb-4 hidden">{productData.amount}</p>
           <div className="text-indigo-600 text-xl font-semibold">
             {productData.price}
           </div>

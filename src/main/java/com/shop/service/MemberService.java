@@ -1,35 +1,37 @@
 package com.shop.service;
 
+import com.shop.dto.MemberFormDto;
 import com.shop.entity.Member;
 import com.shop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberService {
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public Long join(Member member) {
-        validateDuplicateMember(member);
-        memberRepository.save(member);
-        return member.getId();
+    public Member saveMember(MemberFormDto memberFormDto) {
+        validateDuplicateMember(memberFormDto.getEmail());
+
+        Member member = new Member();
+        member.setName(memberFormDto.getName());
+        member.setEmail(memberFormDto.getEmail());
+        member.setPassword(passwordEncoder.encode(memberFormDto.getPassword()));
+        member.setAddress(memberFormDto.getAddress());
+
+        return memberRepository.save(member);
     }
 
-    private void validateDuplicateMember(Member member) {
-        List<Member> findName = memberRepository.findByName(member.getName());
-        if (!findName.isEmpty()) {
+    private void validateDuplicateMember(String email) {
+        Member findMember = memberRepository.findByEmail(email);
+        if (findMember != null) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
-
-    public List<Member> findAll() {
-        return memberRepository.findAll();
-    }
-
-    public List<Member> findByName(String name) {
-        return memberRepository.findByName(name);
-    }
 }
+

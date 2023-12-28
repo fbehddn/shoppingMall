@@ -1,21 +1,27 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
 import Product from "./components/Product";
+import Cart from "./components/Cart/Cart";
 import ProductDetail from "./components/Product-detail";
+import HomePage from "./page/Home";
+import RootLayout from "./page/Root";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "/product", element: <Product /> },
+      { path: "/product-detail/:productId", element: <ProductDetail /> },
+      { path: "/cart", element: <Cart /> },
+    ],
+  },
+]);
 
 const App = () => {
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Product />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/product-detail/:productId" element={<ProductDetail />} />
-      </Routes>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

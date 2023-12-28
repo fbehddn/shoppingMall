@@ -1,8 +1,13 @@
 package com.shop.repository;
 
 import com.shop.entity.Item;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ItemRepository extends JpaRepository<Item, Long> {
+import java.util.List;
 
+public interface ItemRepository{
+    void save(Item item);
+
+    Item findOne(Long id);
+
+    List<Item> findAll();
 }

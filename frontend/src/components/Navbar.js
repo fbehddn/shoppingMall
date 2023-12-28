@@ -1,18 +1,20 @@
+import { Link } from "react-router-dom";
+
 import image from "../assets/chatbot.jpg";
 
 const Navbar = () => {
   return (
     <div className="navbar bg-blue-600">
       <div className="flex-1 mx-10">
-        <a href="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
           DB Market
-        </a>
-        <a href="/cart" className="btn btn-ghost normal-case text-xl">
+        </Link>
+        <Link to="/cart" className="btn btn-ghost normal-case text-xl">
           장바구니
-        </a>
-        <a href="/product" className="btn btn-ghost normal-case text-xl">
+        </Link>
+        <Link to="/product" className="btn btn-ghost normal-case text-xl">
           상품
-        </a>
+        </Link>
       </div>
       <div className="flex-none mx-10 gap-4">
         <div className="dropdown dropdown-end">
@@ -59,16 +61,16 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="/" className="justify-between">
+              <Link to="/" className="justify-between">
                 Profile
                 <span className="badge">New</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/">Settings</a>
+              <Link to="/">Settings</Link>
             </li>
             <li>
-              <a href="/">Logout</a>
+              <Link to="/">Logout</Link>
             </li>
           </ul>
         </div>

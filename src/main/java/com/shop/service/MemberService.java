@@ -3,6 +3,7 @@ package com.shop.service;
 import com.shop.entity.Member;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MemberService {
     String join(Member member);
@@ -11,6 +12,6 @@ public interface MemberService {
 
     List<Member> findAll();
 
-    Member findById(String memberId);
+    Optional<Member> findByMemberId(String memberId);
 
 }

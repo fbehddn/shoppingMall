@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,8 +39,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member findById(String memberId) {
-        return memberRepository.findById(memberId);
+    public Optional<Member> findByMemberId(String memberId) {
+        return memberRepository.findByMemberId(memberId);
     }
 
 }

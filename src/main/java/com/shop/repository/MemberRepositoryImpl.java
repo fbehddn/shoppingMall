@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class MemberRepositoryImpl implements MemberRepository {
@@ -19,8 +20,16 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
-    public Member findById(String id) {
-        return em.find(Member.class, id);
+    public Optional<Member> findByMemberId(String memberId) {
+        String jpql = "SELECT m FROM Member m WHERE m.memberId = :memberId";
+        Member member = em.createQuery(jpql, Member.class)
+                .setParameter("memberId", memberId)
+                .getResultList()
+                .stream()
+                .findFirst()
+                .orElse(null);
+
+        return Optional.ofNullable(member);
     }
 
     @Override

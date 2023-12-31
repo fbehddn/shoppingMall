@@ -1,54 +1,38 @@
-import React, { useContext, useState } from "react";
-
-import CartItem from "./CartItem";
-import Modal from "../Modal/Modal";
+import React, { useContext } from "react";
 import CartContext from "../../store/cart-context";
+import CartItem from "./CartItem";
 
-const Cart = (props) => {
+const Cart = () => {
   const cartCtx = useContext(CartContext);
 
-  const [cartItem, setCartItems] = useState([]);
-
-  const totalAmount = `${cartCtx.totalAmount}원`;
-
-  const cartItemRemoveHandler = (id) => {
-    cartCtx.removeItem(id);
-    setCartItems(cartCtx.items);
-  };
-
-  const cartItemAddHandler = (product) => {
-    cartCtx.addItem(product);
-    setCartItems(cartCtx.items);
-  };
-
-  const cartItems = (
-    <ul>
-      {cartItem.map((item) => (
-        <CartItem
-          key={item.id}
-          image={item.iamge}
-          name={item.name}
-          amount={item.amount}
-          content={item.content}
-          price={item.price}
-          onRemove={cartItemRemoveHandler.bind(null, item.id)}
-          onAdd={cartItemAddHandler.bind(null, item)}
-        />
-      ))}
-    </ul>
+  return (
+    <div className="container mx-auto py-8 px-28">
+      <h1 className="text-4xl font-bold mb-6">Shopping Cart</h1>
+      {cartCtx.items.length === 0 && <p>Your cart is empty.</p>}
+      {cartCtx.items.length !== 0 && (
+        <ul className="w-full">
+          {cartCtx.items.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+        </ul>
+      )}
+      {cartCtx.items.length > 0 && (
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold">
+            Total Amount: {cartCtx.totalAmount.toLocaleString()}원
+          </h2>
+          <div className="flex justify-end">
+            <button
+              onClick={cartCtx.clearCart}
+              className="btn btn-outline btn-warning"
+            >
+              Clear Cart
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
-
-  const cartModalContent = (
-    <>
-      {cartItems}
-      <div>
-        <span>Total Amount</span>
-        <span>{totalAmount}</span>
-      </div>
-    </>
-  );
-
-  return <Modal onClose={props.onClose}>{cartModalContent}</Modal>;
 };
 
 export default Cart;

@@ -1,9 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
+import Modal from "../UI/Modal";
+import Checkout from "./Checkout";
 
 const Cart = () => {
   const cartCtx = useContext(CartContext);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+
+  const openCheckoutModalHandler = () => {
+    setIsCheckoutModalOpen(true);
+  };
+
+  const closeCheckoutModalHandler = () => {
+    setIsCheckoutModalOpen(false);
+  };
 
   return (
     <div className="container mx-auto py-8 px-28">
@@ -19,15 +31,27 @@ const Cart = () => {
       {cartCtx.items.length > 0 && (
         <div className="mt-8">
           <h2 className="text-xl font-semibold">
-            Total Amount: {cartCtx.totalAmount.toLocaleString()}원
+            총 결제 금액: {cartCtx.totalAmount.toLocaleString()}원
           </h2>
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-4">
             <button
               onClick={cartCtx.clearCart}
               className="btn btn-outline btn-warning"
             >
               Clear Cart
             </button>
+            <button
+              className="btn btn-neutral"
+              onClick={openCheckoutModalHandler}
+            >
+              Checkout
+            </button>
+
+            {isCheckoutModalOpen && (
+              <Modal onClose={closeCheckoutModalHandler}>
+                <Checkout />
+              </Modal>
+            )}
           </div>
         </div>
       )}

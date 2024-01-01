@@ -16,9 +16,15 @@
   background-color: white;
   padding: 1rem;
   border-radius: 14px;
+  max-height: 80%;
+  overflow-y: auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+}
+
+.content {
+  overflow-y: auto;
 }
 
 @media (min-width: 768px) {

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import CartContext from "../store/cart-context";
+import CartContext from "../../store/cart-context";
 
 const ProductDetail = () => {
   const location = useLocation();

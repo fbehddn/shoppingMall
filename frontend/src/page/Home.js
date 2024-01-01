@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import image from "../assets/shopping.jpg";
 import classes from "./Home.module.css";
 
 const HomePage = () => {
@@ -14,16 +14,20 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className={classes.image__container}>
-      <div
-        className={`flex justify-center items-center h-screen ${
-          showHome ? "opacity-100" : "opacity-0"
-        } transition-opacity duration-1000 ease-out`}
+    <div className={classes.imageContainer}>
+      <img
+        src={image}
+        alt="shopping"
+        className={`${classes.image} ${showHome ? classes.show : ""}`}
+      />
+      <p
+        className={`${classes.welcomeText} ${showHome ? classes.showText : ""}`}
       >
-        <p className="text-8xl font-bold text-blue-700">
-          Welcome to DB Market!
-        </p>
-      </div>
+        Welcome to
+      </p>
+      <p className={`${classes.text} ${showHome ? classes.showText : ""}`}>
+        DB Market!
+      </p>
     </div>
   );
 };

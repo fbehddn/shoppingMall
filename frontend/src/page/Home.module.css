@@ -1,13 +1,53 @@
-.image__container {
-  height: 100vh;
+.imageContainer {
+  position: relative;
   width: 100%;
-  position: fixed;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: opacity 1s ease-out;
+  position: absolute;
   top: 0;
   left: 0;
-  background-image: url("../assets/shopping.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
   z-index: -1;
+}
+
+.show {
+  opacity: 0.7;
+}
+
+.welcomeText {
+  padding-bottom: 13%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  font-weight: 800;
+  color: #000000; /* Welcome to 텍스트 색상 */
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+  z-index: 1; /* 텍스트를 이미지 위에 표시 */
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  font-weight: 800;
+  color: #66960c; /* DB Market! 텍스트 색상 */
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+  z-index: 1; /* 텍스트를 이미지 위에 표시 */
+}
+
+.showText {
+  opacity: 1;
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import image from "../assets/chatbot.jpg";
-import image2 from "../assets/dog.jpg";
-import image3 from "../assets/quoka.png";
+import image from "../../assets/chatbot.jpg";
+import image2 from "../../assets/dog.jpg";
+import image3 from "../../assets/quoka.png";
 
 const productData = [
   {

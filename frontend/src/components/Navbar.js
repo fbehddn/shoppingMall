@@ -14,6 +14,12 @@ const Navbar = () => {
         </div>
         <div className="flex gap-12">
           <Link
+            to="/login"
+            className="text-gray-800 hover:text-blue-700 transition duration-300"
+          >
+            Login
+          </Link>
+          <Link
             to="/cart"
             className="text-gray-800 hover:text-blue-700 transition duration-300"
           >
